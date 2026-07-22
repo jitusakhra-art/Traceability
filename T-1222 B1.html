@@ -1,0 +1,897 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Material Traceability</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+html{
+scroll-behavior:smooth;
+}
+
+body{
+
+font-family:'Inter',sans-serif;
+
+background:
+linear-gradient(rgba(8,15,25,.88),rgba(8,15,25,.88)),
+url("https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=1800&q=80");
+
+background-size:cover;
+background-position:center;
+background-attachment:fixed;
+
+padding:40px;
+
+color:#2f3542;
+
+}
+
+
+.wrapper{
+
+max-width:1250px;
+margin:auto;
+
+}
+
+
+.main-card{
+
+background:white;
+
+border-radius:22px;
+
+overflow:hidden;
+
+box-shadow:
+0 25px 70px rgba(0,0,0,.45);
+
+animation:fadeUp .7s;
+
+}
+
+@keyframes fadeUp{
+
+from{
+
+opacity:0;
+transform:translateY(40px);
+
+}
+
+to{
+
+opacity:1;
+transform:translateY(0);
+
+}
+
+}
+
+
+.header{
+
+background:linear-gradient(135deg,#002b5c,#004b9c,#0085ff);
+
+padding:35px 45px;
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+position:relative;
+
+overflow:hidden;
+
+}
+
+
+.header:before{
+
+content:"";
+
+position:absolute;
+
+width:450px;
+height:450px;
+
+background:rgba(255,255,255,.05);
+
+border-radius:50%;
+
+top:-220px;
+right:-160px;
+
+}
+
+
+.logo-area{
+
+display:flex;
+
+align-items:center;
+
+gap:22px;
+
+z-index:2;
+
+}
+
+.logo-area img{
+
+width:90px;
+
+height:90px;
+
+background:white;
+
+border-radius:18px;
+
+padding:10px;
+
+box-shadow:0 10px 25px rgba(0,0,0,.30);
+
+}
+
+.company h1{
+
+color:white;
+
+font-size:38px;
+
+font-weight:800;
+
+letter-spacing:1px;
+
+}
+
+.company p{
+
+margin-top:8px;
+
+color:#d9ebff;
+
+font-size:15px;
+
+letter-spacing:3px;
+
+text-transform:uppercase;
+
+}
+
+
+.status{
+
+z-index:2;
+
+background:rgba(255,255,255,.15);
+
+backdrop-filter:blur(15px);
+
+padding:18px 28px;
+
+border-radius:18px;
+
+border:1px solid rgba(255,255,255,.25);
+
+text-align:center;
+
+color:white;
+
+}
+
+
+.status span{
+
+display:block;
+
+font-size:13px;
+
+opacity:.8;
+
+letter-spacing:2px;
+
+text-transform:uppercase;
+
+}
+
+
+.status h2{
+
+margin-top:6px;
+
+font-size:26px;
+
+}
+
+
+.top-title{
+
+background:#ffffff;
+
+padding:30px 45px;
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+border-bottom:1px solid #ececec;
+
+}
+
+
+.title-left h2{
+
+font-size:30px;
+
+font-weight:800;
+
+color:#003b73;
+
+}
+
+
+.title-left p{
+
+margin-top:8px;
+
+font-size:14px;
+
+color:#777;
+
+}
+
+
+.badge{
+
+background:#d9f8e5;
+
+color:#108c45;
+
+padding:10px 22px;
+
+border-radius:50px;
+
+font-size:14px;
+
+font-weight:700;
+
+}
+
+
+.summary{
+
+display:grid;
+
+grid-template-columns:repeat(4,1fr);
+
+gap:22px;
+
+padding:35px;
+
+background:#f7faff;
+
+}
+
+
+.card{
+
+background:white;
+
+border-radius:18px;
+
+padding:22px;
+
+box-shadow:0 8px 25px rgba(0,0,0,.08);
+
+transition:.35s;
+
+position:relative;
+
+overflow:hidden;
+
+}
+
+
+.card:hover{
+
+transform:translateY(-8px);
+
+box-shadow:0 20px 45px rgba(0,0,0,.18);
+
+}
+
+
+.card:before{
+
+content:"";
+
+position:absolute;
+
+left:0;
+top:0;
+
+height:5px;
+width:100%;
+
+background:linear-gradient(90deg,#005bea,#00c6fb);
+
+}
+
+
+.card small{
+
+display:block;
+
+font-size:13px;
+
+font-weight:700;
+
+color:#777;
+
+letter-spacing:1px;
+
+text-transform:uppercase;
+
+}
+
+
+.card h3{
+
+margin-top:14px;
+
+font-size:24px;
+
+color:#0b3d91;
+
+font-weight:800;
+
+}
+
+
+.section{
+
+padding:40px;
+
+}
+
+
+.section-title{
+
+display:flex;
+
+align-items:center;
+
+justify-content:space-between;
+
+margin-bottom:28px;
+
+}
+
+
+.section-title h2{
+
+font-size:28px;
+
+color:#0a3766;
+
+font-weight:800;
+
+}
+
+
+.line{
+
+height:5px;
+
+width:80px;
+
+background:linear-gradient(90deg,#005bea,#00c6fb);
+
+border-radius:20px;
+
+margin-top:8px;
+
+}
+
+
+.data-table{
+
+width:100%;
+
+border-collapse:separate;
+
+border-spacing:0 12px;
+
+}
+
+
+.data-table tr{
+
+transition:.25s;
+
+}
+
+
+.data-table tr:hover{
+
+transform:scale(1.01);
+
+}
+
+
+.data-table td{
+
+padding:18px 22px;
+
+background:#ffffff;
+
+box-shadow:0 4px 12px rgba(0,0,0,.05);
+
+}
+
+
+.data-table td:first-child{
+
+width:320px;
+
+background:#0b4f8a;
+
+color:white;
+
+font-weight:700;
+
+border-radius:12px 0 0 12px;
+
+letter-spacing:.5px;
+
+}
+
+
+.data-table td:last-child{
+
+border-radius:0 12px 12px 0;
+
+font-weight:600;
+
+color:#333;
+
+background:#fdfdfd;
+
+}
+
+
+.footer{
+
+padding:28px;
+
+background:#0b2747;
+
+text-align:center;
+
+color:#dbe8f8;
+
+font-size:14px;
+
+letter-spacing:1px;
+
+}
+
+
+.note{
+
+margin-top:18px;
+
+padding:18px;
+
+background:#fff8dd;
+
+border-left:6px solid #ffbf00;
+
+border-radius:10px;
+
+font-size:14px;
+
+color:#555;
+
+}
+
+
+@media(max-width:1050px){
+
+.summary{
+
+grid-template-columns:repeat(2,1fr);
+
+}
+
+.header{
+
+flex-direction:column;
+gap:25px;
+
+}
+
+.top-title{
+
+flex-direction:column;
+gap:18px;
+align-items:flex-start;
+
+}
+
+}
+
+
+@media(max-width:700px){
+
+body{
+
+padding:10px;
+
+}
+
+.summary{
+
+grid-template-columns:1fr;
+
+}
+
+.data-table td:first-child{
+
+width:180px;
+
+}
+
+.company h1{
+
+font-size:28px;
+
+}
+
+.logo-area{
+
+flex-direction:column;
+
+text-align:center;
+
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="wrapper">
+
+<div class="main-card">
+
+<div class="header">
+
+<div class="logo-area">
+
+<img src="../Logo/company_logo.png">
+
+<div class="company">
+
+<h1>MetalMech Engineering</h1>
+
+<p>Material Traceability System</p>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="top-title">
+
+<div class="title-left">
+
+<h2>Material Traceability Dashboard</h2>
+
+<p>Raw Material Traceability Information</p>
+
+</div>
+
+<div class="badge">
+
+LIVE RECORD
+
+</div>
+
+</div>
+
+<div class="summary">
+
+<div class="card">
+
+<small>Bin Card</small>
+
+<h3>T-1222 B1</h3>
+
+</div>
+
+<div class="card">
+
+<small>Travel Card</small>
+
+<h3>T-1222</h3>
+
+</div>
+
+<div class="card">
+
+<small>MTC Number</small>
+
+<h3><a href="https://jitusakhra-art.github.io/Traceability/MTC-610-3.pdf" target="_blank">610</a></h3>
+
+</div>
+
+<div class="card">
+
+<small>Heat Number</small>
+
+<h3>3</h3>
+
+</div>
+<div class="card">
+
+<small>Component</small>
+
+<h3>MM EX 313001M-00 ENTRY COMPONENT</h3>
+
+</div>
+
+</div>
+
+<div class="section">
+
+<div class="section-title">
+
+<div>
+
+<h2>Traceability Details</h2>
+
+<div class="line"></div>
+
+</div>
+
+</div>
+
+<table class="data-table">
+
+<tr>
+    <td>Receive Date</td>
+    <td>19/07/2026</td>
+</tr>
+
+<tr>
+    <td>Material Issue Date</td>
+    <td>20/07/2026</td>
+</tr>
+
+<tr>
+    <td>Material Description</td>
+    <td>25.00MM HEX SOLID</td>
+</tr>
+
+</tr>
+
+<tr>
+    <td>RMN No</td>
+    <td>R260719-01</td>
+</tr>
+
+<tr>
+    <td>Batch No</td>
+    <td>ZEX261002271610-3</td>
+</tr>
+
+<tr>
+    <td>Purchase Order</td>
+    <td>EX-PO26-26100279</td>
+</tr>
+
+<tr>
+    <td>Supplier</td>
+    <td>BANSIDHAR METAL</td>
+</tr>
+
+<tr>
+    <td>Challan No</td>
+    <td>EX26GRN-26100227</td>
+</tr>
+
+<tr>
+    <td>Heat No</td>
+    <td>3</td>
+</tr>
+
+<tr>
+    <td>Inward Quantity</td>
+    <td>885.3</td>
+</tr>
+
+<tr>
+    <td>Issue Quantity 1</td>
+    <td>310.1</td>
+</tr>
+
+<tr>
+    <td>Issue Quantity 2</td>
+    <td>0</td>
+</tr>
+
+<tr>
+    <td>Issue Quantity 3</td>
+    <td>0</td>
+</tr>
+
+<tr>
+    <td>Issue Quantity 4</td>
+    <td>0</td>
+</tr>
+
+<tr>
+    <td>Issue Quantity 5</td>
+    <td>0</td>
+</tr>
+
+<tr>
+    <td>Pending Quantity</td>
+    <td>575.2</td>
+</tr>
+
+</table>
+
+</div>
+
+<div class="section" style="background:#f7faff; border-top:1px solid #e8edf5;">
+
+<div class="section-title">
+
+<div>
+
+<h2>CMN Details</h2>
+
+<div class="line"></div>
+
+</div>
+
+<div class="badge">
+
+PRODUCTION
+
+</div>
+
+</div>
+
+<table class="data-table">
+
+<tr>
+    <td>Material Issue Date</td>
+    <td>20/07/2026</td>
+</tr>
+
+<tr>
+    <td>Component Description</td>
+    <td>MM EX 313001M-00 ENTRY COMPONENT</td>
+</tr>
+
+<tr>
+    <td>CMN No</td>
+    <td>C26072001-03</td>
+</tr>
+
+<tr>
+    <td>Production Kgs 1</td>
+    <td>0</td>
+</tr>
+
+<tr>
+    <td>Production Pcs 1</td>
+    <td>0</td>
+</tr>
+
+<tr>
+    <td>Production Reject Qty 1</td>
+    <td>0</td>
+</tr>
+
+<tr>
+    <td>Visual Reject Qty 1</td>
+    <td>0</td>
+</tr>
+
+<tr>
+    <td>Production Kgs 2</td>
+    <td>0</td>
+</tr>
+
+<tr>
+    <td>Production Pcs 2</td>
+    <td>0</td>
+</tr>
+
+<tr>
+    <td>Production Reject Qty 2</td>
+    <td>0</td>
+</tr>
+
+<tr>
+    <td>Visual Reject Qty 2</td>
+    <td>0</td>
+</tr>
+
+<tr>
+    <td>Production Kgs 3</td>
+    <td>0</td>
+</tr>
+
+<tr>
+    <td>Production Pcs 3</td>
+    <td>0</td>
+</tr>
+
+<tr>
+    <td>Production Reject Qty 3</td>
+    <td>0</td>
+</tr>
+
+<tr>
+    <td>Visual Reject Qty 3</td>
+    <td>0</td>
+</tr>
+
+</table>
+
+<div class="note">
+<b>Note :</b> All production details will be filled after completion
+of the production process.
+</div>
+
+</div>
+
+<div class="footer">
+
+<div style="font-size:22px;font-weight:700;">
+MetalMech Engineering
+</div>
+
+<div style="margin-top:8px;">
+Material Traceability System
+</div>
+
+<div style="margin-top:18px;opacity:.75;">
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</body>
+
+</html>
