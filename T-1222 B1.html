@@ -1,0 +1,1076 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+<title>Material Traceability Dashboard</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+:root{
+
+--blue:#0A3D91;
+--blue2:#1464D2;
+--light:#F4F7FC;
+--dark:#132238;
+--text:#374151;
+--white:#ffffff;
+--success:#16A34A;
+--border:#E5E7EB;
+
+}
+
+html{
+
+scroll-behavior:smooth;
+
+}
+
+body{
+
+font-family:'Inter',sans-serif;
+
+background:#EDF2F8;
+
+color:var(--text);
+
+}
+
+.container{
+    width:min(96%,1450px);
+    margin:20px auto;
+    padding:0 12px;
+
+}
+
+.dashboard{
+
+background:white;
+
+border-radius:22px;
+
+overflow:hidden;
+
+box-shadow:
+
+0 20px 60px rgba(0,0,0,.12);
+
+}
+
+/* HEADER */
+
+.header{
+
+background:
+
+linear-gradient(135deg,#082B63,#0D57C4,#1388FF);
+
+padding:30px 40px;
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+position:relative;
+
+overflow:hidden;
+
+}
+
+.header::after{
+
+content:"";
+
+position:absolute;
+
+width:420px;
+height:420px;
+
+right:-120px;
+top:-180px;
+
+border-radius:50%;
+
+background:rgba(255,255,255,.06);
+
+}
+
+.company{
+
+display:flex;
+
+align-items:center;
+
+gap:20px;
+
+z-index:2;
+
+}
+
+.company img{
+
+width:85px;
+
+height:85px;
+
+background:white;
+
+padding:8px;
+
+border-radius:18px;
+
+box-shadow:0 10px 25px rgba(0,0,0,.25);
+
+}
+
+.company h1{
+
+color:white;
+
+font-size:36px;
+
+font-weight:800;
+
+}
+
+.company p{
+
+margin-top:6px;
+
+font-size:14px;
+
+color:#D8E8FF;
+
+letter-spacing:2px;
+
+text-transform:uppercase;
+
+}
+
+.verify{
+
+z-index:2;
+
+background:rgba(255,255,255,.12);
+
+padding:18px 25px;
+
+border-radius:18px;
+
+border:1px solid rgba(255,255,255,.25);
+
+backdrop-filter:blur(18px);
+
+color:white;
+
+text-align:center;
+
+}
+
+.verify small{
+
+display:block;
+
+opacity:.8;
+
+font-size:12px;
+
+letter-spacing:2px;
+
+text-transform:uppercase;
+
+}
+
+.verify h2{
+
+margin-top:6px;
+
+font-size:24px;
+
+}
+
+/* PAGE TITLE */
+
+.topbar{
+
+padding:25px 35px;
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+background:white;
+
+border-bottom:1px solid #ECECEC;
+
+}
+
+.topbar h2{
+
+font-size:30px;
+
+font-weight:800;
+
+color:var(--dark);
+
+}
+
+.topbar p{
+
+margin-top:6px;
+
+color:#7B8794;
+
+font-size:14px;
+
+}
+
+.live{
+
+background:#DCFCE7;
+
+color:#15803D;
+
+padding:10px 22px;
+
+border-radius:50px;
+
+font-size:13px;
+
+font-weight:700;
+
+}
+
+/* SUMMARY */
+
+.summary{
+
+padding:30px;
+
+display:grid;
+
+grid-template-columns:repeat(5,1fr);
+
+gap:22px;
+
+background:#F7F9FC;
+
+}
+
+.card{
+
+background:white;
+
+border-radius:18px;
+
+padding:16px;
+
+box-shadow:0 8px 20px rgba(0,0,0,.08);
+
+transition:.35s;
+
+position:relative;
+
+overflow:hidden;
+
+}
+
+.card:before{
+
+content:"";
+
+position:absolute;
+
+left:0;
+
+top:0;
+
+height:5px;
+
+width:100%;
+
+background:linear-gradient(90deg,#005CEA,#00B8FF);
+
+}
+
+.card:hover{
+
+transform:translateY(-7px);
+
+box-shadow:0 20px 40px rgba(0,0,0,.18);
+
+}
+
+.card small{
+
+display:block;
+
+font-size:12px;
+
+font-weight:700;
+
+letter-spacing:1px;
+
+text-transform:uppercase;
+
+color:#6B7280;
+
+}
+
+.card h3{
+
+margin-top:15px;
+
+font-size:21px;
+
+font-weight:800;
+
+color:var(--blue);
+
+word-break:break-word;
+
+}
+
+/* SECTION */
+
+.section{
+
+padding:35px;
+
+}
+
+.section-header{
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+margin-bottom:25px;
+
+}
+
+.section-header h2{
+
+font-size:28px;
+
+font-weight:800;
+
+color:#173B72;
+
+}
+
+.bar{
+
+margin-top:8px;
+
+height:5px;
+
+width:80px;
+
+border-radius:20px;
+
+background:linear-gradient(90deg,#0A5DFF,#00C4FF);
+
+}
+
+.tag{
+
+padding:10px 18px;
+
+border-radius:40px;
+
+background:#DBEAFE;
+
+color:#1D4ED8;
+
+font-size:13px;
+
+font-weight:700;
+
+}
+
+/* TABLE */
+
+.table{
+    width:100%;
+    border-collapse:separate;
+    border-spacing:0 10px;
+    table-layout:fixed;
+}
+
+.table td{
+
+padding:18px 20px;
+
+}
+
+.table td:first-child{
+
+width:180px;
+
+background:#0C4EA2;
+
+color:white;
+
+font-weight:700;
+
+border-radius:12px 0 0 12px;
+
+}
+
+.table td:last-child{
+
+background:#F9FBFD;
+
+font-weight:600;
+
+border-radius:0 12px 12px 0;
+
+box-shadow:0 4px 10px rgba(0,0,0,.05);
+
+}
+
+.table tr{
+
+transition:.30s;
+
+}
+
+.table tr:hover{
+
+transform:scale(1.01);
+
+}
+
+/* NOTE */
+
+.note{
+
+margin-top:25px;
+
+padding:18px;
+
+background:#FFF9DB;
+
+border-left:5px solid #FBBF24;
+
+border-radius:10px;
+
+font-size:14px;
+
+line-height:24px;
+
+}
+
+/* FOOTER */
+
+.footer{
+
+padding:30px;
+
+text-align:center;
+
+background:#0F2749;
+
+color:white;
+
+}
+
+.footer h3{
+
+font-size:22px;
+
+}
+
+.footer p{
+
+margin-top:8px;
+
+opacity:.8;
+
+font-size:14px;
+
+}
+
+/* RESPONSIVE */
+
+@media(max-width:1200px){
+
+.summary{
+
+grid-template-columns:repeat(2,1fr);
+
+}
+
+}
+
+@media(max-width:768px){
+
+.container{
+
+width:100%;
+margin:0;
+
+}
+
+.dashboard{
+
+border-radius:0;
+
+}
+
+.header{
+
+padding:25px;
+
+flex-direction:column;
+
+text-align:center;
+
+gap:20px;
+
+}
+
+.company{
+
+flex-direction:column;
+
+}
+
+.company img{
+
+width:65px;
+height:65px;
+
+}
+
+.company h1{
+
+font-size:20px;
+
+}
+
+.verify{
+
+width:100%;
+
+}
+
+.topbar{
+
+padding:20px;
+
+flex-direction:column;
+
+align-items:flex-start;
+
+gap:15px;
+
+}
+
+.topbar h2{
+
+font-size:22px;
+
+}
+
+.summary{
+
+grid-template-columns:1fr;
+
+padding:18px;
+
+gap:15px;
+
+}
+
+.section{
+
+padding:18px;
+
+overflow-x:auto;
+
+}
+
+.table{
+    width:100%;
+    min-width:100%;
+    table-layout:fixed;
+}
+
+.table td:first-child{
+
+width:140px;
+
+}
+
+@media(max-width:480px){
+
+.company h1{
+
+font-size:22px;
+
+}
+
+.card{
+
+padding:14px;
+
+}
+
+.card h3{
+
+font-size:14px;
+
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="dashboard">
+
+<div class="header">
+
+<div class="company">
+
+<img src="../Logo/company_logo.png">
+
+<div>
+
+<h1>MetalMech Engineering</h1>
+
+<p>Material Traceability System</p>
+
+</div>
+
+</div>
+
+<div class="verify">
+
+<small>System Status</small>
+
+<h2>✔ VERIFIED</h2>
+
+</div>
+
+</div>
+
+<div class="topbar">
+
+<div>
+
+<h2>Material Traceability Dashboard</h2>
+
+<p>Industrial Material Traceability Portal</p>
+
+</div>
+
+<div class="live">
+
+LIVE RECORD
+
+</div>
+
+</div>
+
+<div class="summary">
+
+<div class="card">
+
+<small>Bin Card No</small>
+
+<h3>T-1222 B1</h3>
+
+</div>
+
+<div class="card">
+
+<small>Travel Card No</small>
+
+<h3>T-1222</h3>
+
+</div>
+
+<div class="card">
+
+<small>MTC Number</small>
+
+<h3><a href="https://jitusakhra-art.github.io/Traceability/MTC-610-3.pdf" target="_blank">610</a></h3>
+
+</div>
+
+<div class="card">
+
+<small>Heat Number</small>
+
+<h3>3</h3>
+
+</div>
+
+<div class="card">
+
+<small>Component Description</small>
+
+<h3>MM EX 313001M-00 ENTRY COMPONENT</h3>
+
+</div>
+
+</div>
+
+<!-- TRACEABILITY DETAILS -->
+
+<div class="section">
+
+<div class="section-header">
+
+<div>
+
+<h2>Traceability Details</h2>
+
+<div class="bar"></div>
+
+</div>
+
+<div class="tag">
+
+RAW MATERIAL
+
+</div>
+
+</div>
+
+<table class="table">
+
+<tr>
+
+<td>Receive Date</td>
+
+<td>19/07/2026</td>
+
+</tr>
+
+<tr>
+
+<td>Material Issue Date</td>
+
+<td>20/07/2026</td>
+
+</tr>
+
+<tr>
+
+<td>Material Description</td>
+
+<td>25.00MM HEX SOLID</td>
+
+</tr>
+
+<tr>
+
+<td>RMN No</td>
+
+<td>R260719-01</td>
+
+</tr>
+
+<tr>
+
+<td>Batch No</td>
+
+<td>ZEX261002271610-3</td>
+
+</tr>
+
+<tr>
+
+<td>Purchase Order</td>
+
+<td>EX-PO26-26100279</td>
+
+</tr>
+
+<tr>
+
+<td>Supplier</td>
+
+<td>BANSIDHAR METAL</td>
+
+</tr>
+
+<tr>
+
+<td>Challan No</td>
+
+<td>EX26GRN-26100227</td>
+
+</tr>
+
+<tr>
+
+<td>Inward Quantity</td>
+
+<td>885.3</td>
+
+</tr>
+
+<tr>
+
+<td>Issue Quantity 1</td>
+
+<td>310.1</td>
+
+</tr>
+
+<tr>
+
+<td>Issue Quantity 2</td>
+
+<td>0</td>
+
+</tr>
+
+<tr>
+
+<td>Issue Quantity 3</td>
+
+<td>0</td>
+
+</tr>
+
+<tr>
+
+<td>Issue Quantity 4</td>
+
+<td>0</td>
+
+</tr>
+
+<tr>
+
+<td>Issue Quantity 5</td>
+
+<td>0</td>
+
+</tr>
+
+<tr>
+
+<td>Pending Quantity</td>
+
+<td style="font-weight:800;color:#d32f2f;">
+
+575.2
+
+</td>
+
+</tr>
+
+</table>
+
+</div>
+
+<!-- CMN DETAILS -->
+
+<div class="section" style="background:#F7F9FC;">
+
+<div class="section-header">
+
+<div>
+
+<h2>Production / CMN Details</h2>
+
+<div class="bar"></div>
+
+</div>
+
+<div class="tag">
+
+PRODUCTION
+
+</div>
+
+</div>
+
+<table class="table">
+
+<tr>
+
+<td>Material Issue Date</td>
+
+<td>20/07/2026</td>
+
+</tr>
+
+<tr>
+
+<td>Component Description</td>
+
+<td>MM EX 313001M-00 ENTRY COMPONENT</td>
+
+</tr>
+
+<tr>
+
+<td>CMN Number</td>
+
+<td>C26072001-03</td>
+
+</tr>
+
+<tr>
+
+<td>Production Kgs 1</td>
+
+<td>0</td>
+
+</tr>
+
+<tr>
+
+<td>Production Pcs 1</td>
+
+<td>0</td>
+
+</tr>
+
+<tr>
+
+<td>Production Reject Qty 1</td>
+
+<td>0</td>
+
+</tr>
+
+<tr>
+
+<td>Visual Reject Qty 1</td>
+
+<td>0</td>
+
+</tr>
+
+<tr>
+
+<td>Production Kgs 2</td>
+
+<td>0</td>
+
+</tr>
+
+<tr>
+
+<td>Production Pcs 2</td>
+
+<td>0</td>
+
+</tr>
+
+<tr>
+
+<td>Production Reject Qty 2</td>
+
+<td>0</td>
+
+</tr>
+
+<tr>
+
+<td>Visual Reject Qty 2</td>
+
+<td>0</td>
+
+</tr>
+
+<tr>
+
+<td>Production Kgs 3</td>
+
+<td>0</td>
+
+</tr>
+
+<tr>
+
+<td>Production Pcs 3</td>
+
+<td>0</td>
+
+</tr>
+
+<tr>
+
+<td>Production Reject Qty 3</td>
+
+<td>0</td>
+
+</tr>
+
+<tr>
+
+<td>Visual Reject Qty 3</td>
+
+<td>0</td>
+
+</tr>
+
+</table>
+
+<div class="note">
+
+<b>Note :</b>
+
+All production details shown above are automatically generated from the Material Traceability System after completion of the production process. This report is intended for production monitoring, customer traceability and audit purposes.
+
+</div>
+
+</div>
+
+<div class="footer">
+
+<h3>MetalMech Engineering</h3>
+
+<p>
+
+Material Traceability System
+
+</p>
+
+<p>
+
+Generated Automatically | ERP Traceability Portal | Version 3.0
+
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</body>
+
+</html>
