@@ -1,0 +1,1714 @@
+	<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=1400, initial-scale=0.25, maximum-scale=5">
+
+<title>
+
+MetalMech Engineering | Material Traceability System
+
+</title>
+
+<link rel="preconnect"
+href="https://fonts.googleapis.com">
+
+<link rel="preconnect"
+href="https://fonts.gstatic.com"
+crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap"
+rel="stylesheet">
+
+<style>
+
+/*====================================================
+                RESET
+====================================================*/
+
+*{
+
+margin:0;
+
+padding:0;
+
+box-sizing:border-box;
+
+}
+
+html{
+
+scroll-behavior:smooth;
+
+}
+
+:root{
+
+--blue:#0B5ED7;
+
+--blue2:#1976D2;
+
+--blue3:#42A5F5;
+
+--dark:#0F172A;
+
+--text:#1E293B;
+
+--text2:#64748B;
+
+--border:#DCE6F3;
+
+--bg:#EEF4FB;
+
+--white:#FFFFFF;
+
+}
+
+body{
+
+font-family:'Poppins',sans-serif;
+
+background:
+
+linear-gradient(
+135deg,
+#EAF2FF,
+#F7FAFF
+);
+
+color:var(--text);
+
+padding:30px;
+
+overflow-x:auto;
+
+}
+
+.wrapper{
+
+width:1400px;
+
+min-width:1400px;
+
+margin:auto;
+
+}
+
+.dashboard{
+
+background:#FFFFFF;
+
+border-radius:30px;
+
+overflow:hidden;
+
+box-shadow:
+
+0 25px 70px rgba(15,23,42,.12);
+
+}
+
+/*====================================================
+                HERO HEADER
+====================================================*/
+
+.hero{
+
+position:relative;
+
+overflow:hidden;
+
+padding:40px;
+
+background:
+
+linear-gradient(
+135deg,
+#083B8C 0%,
+#0B5ED7 55%,
+#42A5F5 100%
+);
+
+color:#FFFFFF;
+
+}
+
+.hero::before{
+
+content:"";
+
+position:absolute;
+
+top:-140px;
+
+right:-120px;
+
+width:340px;
+
+height:340px;
+
+border-radius:50%;
+
+background:rgba(255,255,255,.08);
+
+}
+
+.hero::after{
+
+content:"";
+
+position:absolute;
+
+bottom:-170px;
+
+left:-130px;
+
+width:360px;
+
+height:360px;
+
+border-radius:50%;
+
+background:rgba(255,255,255,.05);
+
+}
+
+.heroTop{
+
+position:relative;
+
+z-index:2;
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+gap:30px;
+
+}
+
+.company{
+
+display:flex;
+
+align-items:center;
+
+gap:25px;
+
+}
+
+.logoBox{
+
+width:290px;
+
+height:130px;
+
+background:#FFFFFF;
+
+border-radius:18px;
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+padding:10px 15px;
+
+box-shadow:
+
+0 8px 25px rgba(0,0,0,.15);
+
+}
+
+.logoBox img{
+
+width:95%;
+
+height:95%;
+
+object-fit:contain;
+
+}
+
+.companyText{
+
+display:flex;
+
+flex-direction:column;
+
+justify-content:center;
+
+align-self:center;
+
+height:130px;
+
+padding-top:20px;
+
+}
+
+.companyText h1{
+
+margin:0;
+
+font-size:38px;
+
+font-weight:800;
+
+letter-spacing:.5px;
+
+}
+
+.companyText p{
+
+margin:8px 0 0 0;
+
+font-size:17px;
+
+opacity:.95;
+
+font-weight:500;
+
+}
+
+.verifyCard{
+
+min-width:280px;
+
+padding:22px 28px;
+
+border-radius:24px;
+
+background:rgba(255,255,255,.16);
+
+border:1px solid rgba(255,255,255,.28);
+
+backdrop-filter:blur(18px);
+
+text-align:center;
+
+box-shadow:
+
+0 10px 35px rgba(0,0,0,.12);
+
+}
+
+.verifyCard small{
+
+display:block;
+
+font-size:13px;
+
+letter-spacing:2px;
+
+text-transform:uppercase;
+
+opacity:.90;
+
+}
+
+.verifyCard h2{
+
+margin-top:10px;
+
+font-size:30px;
+
+font-weight:900;
+
+}
+
+.verifyCard span{
+
+display:block;
+
+margin-top:8px;
+
+font-size:14px;
+
+opacity:.95;
+
+}
+
+/*====================================================
+                SUMMARY CARDS
+====================================================*/
+
+.summaryCards{
+
+position:relative;
+
+z-index:5;
+
+display:grid;
+
+grid-template-columns:repeat(4,1fr);
+
+gap:22px;
+
+padding:35px;
+
+margin-top:-32px;
+
+}
+
+.summaryCard{
+
+background:#FFFFFF;
+
+border-radius:24px;
+
+padding:24px;
+
+border:1px solid var(--border);
+
+box-shadow:
+
+0 12px 35px rgba(15,23,42,.08);
+
+transition:.30s;
+
+position:relative;
+
+overflow:hidden;
+
+}
+
+.summaryCard::before{
+
+content:"";
+
+position:absolute;
+
+left:0;
+
+top:0;
+
+width:6px;
+
+height:100%;
+
+background:
+
+linear-gradient(
+180deg,
+var(--blue),
+var(--blue3)
+);
+
+}
+
+.summaryCard:hover{
+
+transform:translateY(-5px);
+
+box-shadow:
+
+0 20px 45px rgba(11,94,215,.14);
+
+}
+
+.summaryCard.full{
+
+grid-column:1/-1;
+
+}
+
+.summaryTitle{
+
+font-size:12px;
+
+font-weight:800;
+
+letter-spacing:2px;
+
+text-transform:uppercase;
+
+color:var(--text2);
+
+margin-bottom:12px;
+
+}
+
+.summaryValue{
+
+font-size:28px;
+
+font-weight:800;
+
+color:var(--blue);
+
+line-height:1.4;
+
+word-break:break-word;
+
+}
+
+.componentCard .summaryValue{
+
+font-size:22px;
+
+color:var(--dark);
+
+}
+
+/*====================================================
+                COMMON SECTIONS
+====================================================*/
+
+.section{
+
+margin:0 35px 30px;
+
+background:#FFFFFF;
+
+border:1px solid var(--border);
+
+border-radius:24px;
+
+overflow:hidden;
+
+box-shadow:
+
+0 10px 30px rgba(15,23,42,.06);
+
+}
+
+.sectionHeader{
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+padding:22px 28px;
+
+background:
+
+linear-gradient(
+90deg,
+#F7FAFF,
+#EDF5FF
+);
+
+border-bottom:1px solid var(--border);
+
+}
+
+.sectionHeader h2{
+
+font-size:22px;
+
+font-weight:800;
+
+color:var(--dark);
+
+}
+
+.blueLine{
+
+width:90px;
+
+height:5px;
+
+border-radius:30px;
+
+margin-top:10px;
+
+background:
+
+linear-gradient(
+90deg,
+var(--blue),
+var(--blue3)
+);
+
+}
+
+.sectionBody{
+
+padding:30px;
+
+}
+
+/*====================================================
+                DETAILS GRID
+====================================================*/
+
+.infoGrid{
+
+display:grid;
+
+grid-template-columns:repeat(2,1fr);
+
+gap:18px;
+
+}
+
+.infoItem{
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+gap:20px;
+
+padding:18px 22px;
+
+background:
+
+linear-gradient(
+135deg,
+#FFFFFF,
+#F8FBFF
+);
+
+border:1px solid var(--border);
+
+border-radius:18px;
+
+transition:.30s;
+
+}
+
+.infoItem:hover{
+
+transform:translateY(-3px);
+
+border-color:#BFD8FF;
+
+box-shadow:
+
+0 10px 30px rgba(11,94,215,.10);
+
+}
+
+.infoLabel{
+
+font-size:13px;
+
+font-weight:800;
+
+letter-spacing:1px;
+
+text-transform:uppercase;
+
+color:var(--text2);
+
+}
+
+.infoValue{
+
+font-size:18px;
+
+font-weight:700;
+
+color:var(--dark);
+
+text-align:right;
+
+word-break:break-word;
+
+}
+
+/*====================================================
+                BADGES
+====================================================*/
+
+.badge{
+
+display:inline-flex;
+
+align-items:center;
+
+justify-content:center;
+
+padding:8px 18px;
+
+border-radius:50px;
+
+font-size:12px;
+
+font-weight:800;
+
+letter-spacing:1px;
+
+text-transform:uppercase;
+
+}
+
+.badgeBlue{
+
+background:#E8F1FF;
+
+color:var(--blue);
+
+}
+
+.badgeGreen{
+
+background:#EAFBF2;
+
+color:#15803D;
+
+}
+
+.badgeRed{
+
+background:#FFECEC;
+
+color:#DC2626;
+
+}
+
+/*====================================================
+                INVENTORY BARS
+====================================================*/
+
+.progress{
+
+width:100%;
+
+height:12px;
+
+margin-top:12px;
+
+background:#E9EEF6;
+
+border-radius:50px;
+
+overflow:hidden;
+
+}
+
+.progressFill{
+
+height:100%;
+
+border-radius:50px;
+
+background:
+
+linear-gradient(
+90deg,
+var(--blue),
+var(--blue3)
+);
+
+}
+
+/*====================================================
+                FOOTER
+====================================================*/
+
+.footer{
+
+width:650px;
+
+max-width:90%;
+
+margin:40px auto 0 auto;
+
+padding:35px;
+
+border-radius:24px;
+
+background:
+
+linear-gradient(
+135deg,
+#083B8C,
+#0B5ED7,
+#42A5F5
+);
+
+color:#FFFFFF;
+
+text-align:center;
+
+box-shadow:
+
+0 18px 45px rgba(11,94,215,.20);
+
+clear:both;
+
+}
+
+/*====================================================
+            LANDSCAPE DESKTOP VIEW
+====================================================*/
+
+@media (max-width:768px){
+
+html,
+body{
+
+overflow-x:auto;
+
+overflow-y:auto;
+
+min-width:1400px;
+
+background:
+
+linear-gradient(
+135deg,
+#EAF2FF,
+#F7FAFF
+);
+
+}
+
+.wrapper{
+
+width:1400px;
+
+min-width:1400px;
+
+margin:auto;
+
+}
+
+.dashboard{
+
+width:1400px;
+
+min-width:1400px;
+
+}
+
+}
+
+/*====================================================
+                END CSS
+====================================================*/
+
+</style>
+
+</head>
+
+<body>
+
+<div class="wrapper">
+
+<div class="dashboard">
+
+<!-- ==========================================================
+                    HERO HEADER
+=========================================================== -->
+
+<div class="hero">
+
+    <div class="heroTop">
+
+        <!-- LEFT : LOGO -->
+
+        <div class="logoBox">
+
+            <img src="file:///F:/Traceability/Logo/company_logo.png.png" alt="MetalMech Logo">
+
+        </div>
+
+        <!-- CENTER : COMPANY NAME -->
+
+        <div class="heroCenter">
+
+            <h1>MetalMech Engineering</h1>
+
+            <p>Material Traceability System</p>
+
+        </div>
+
+        <!-- RIGHT : VERIFY -->
+
+    <div class="verifyCard">
+
+    <small>System Status</small>
+
+    <h2>✔ VERIFIED</h2>
+
+</div>
+
+        
+    </div>
+
+</div>
+
+<!-- ==========================================================
+                    SUMMARY CARDS
+=========================================================== -->
+
+<div class="summaryCards">
+
+    <!-- BIN CARD -->
+
+    <div class="summaryCard">
+
+        <div class="summaryTitle">
+
+            BIN CARD NO.
+
+        </div>
+
+        <div class="summaryValue">
+
+            T-1158 B1
+
+        </div>
+
+    </div>
+
+    <!-- TRAVEL CARD -->
+
+    <div class="summaryCard">
+
+        <div class="summaryTitle">
+
+            TRAVEL CARD NO.
+
+        </div>
+
+        <div class="summaryValue">
+
+            T-1158
+
+        </div>
+
+    </div>
+
+    <!-- RMN -->
+
+    <div class="summaryCard">
+
+        <div class="summaryTitle">
+
+            RMN NO.
+
+        </div>
+
+        <div class="summaryValue">
+
+            R260627-01
+
+        </div>
+
+    </div>
+
+    <!-- MTC -->
+
+    <div class="summaryCard">
+
+        <div class="summaryTitle">
+
+            MTC NO.
+
+        </div>
+
+        <div class="summaryValue">
+
+            <a href="https://jitusakhra-art.github.io/Traceability/MTC-449-2.pdf" target="_blank">449</a>
+
+        </div>
+
+    </div>
+
+    <!-- COMPONENT DESCRIPTION -->
+
+    <div class="summaryCard full componentCard">
+
+        <div class="summaryTitle">
+
+            COMPONENT DESCRIPTION
+
+        </div>
+
+        <div class="summaryValue">
+
+            MM EX 313003-06 BACK NUT
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- ==========================================================
+                    BIN CARD DETAILS
+=========================================================== -->
+
+<div class="section">
+
+    <div class="sectionHeader">
+
+        <div>
+
+            <h2>📦 BIN CARD DETAILS</h2>
+
+            <div class="blueLine"></div>
+
+        </div>
+
+    </div>
+
+    <div class="sectionBody">
+
+        <div class="infoGrid">
+
+            <!-- RECEIVE DATE -->
+
+            <div class="infoItem">
+
+                <div class="infoLabel">
+
+                    Receive Date
+
+                </div>
+
+                <div class="infoValue">
+
+                    27/06/2026
+
+                </div>
+
+            </div>
+
+            <!-- MATERIAL ISSUE DATE -->
+
+            <div class="infoItem">
+
+                <div class="infoLabel">
+
+                    Material Issue Date
+
+                </div>
+
+                <div class="infoValue">
+
+                    19/07/2026
+
+                </div>
+
+            </div>
+
+            <!-- MATERIAL DESCRIPTION -->
+
+            <div class="infoItem">
+
+                <div class="infoLabel">
+
+                    Material Description
+
+                </div>
+
+                <div class="infoValue">
+
+                    80.00MM HEX X 69.00MM HOLLOW
+
+                </div>
+
+            </div>
+
+            <!-- HEAT NO -->
+
+            <div class="infoItem">
+
+                <div class="infoLabel">
+
+                    Heat No.
+
+                </div>
+
+                <div class="infoValue">
+
+                    2
+
+                </div>
+
+            </div>
+
+            <!-- BATCH NO -->
+
+            <div class="infoItem">
+
+                <div class="infoLabel">
+
+                    Batch No.
+
+                </div>
+
+                <div class="infoValue">
+
+                    ZEX260003131449-2
+
+                </div>
+
+            </div>
+
+            <!-- PURCHASE ORDER -->
+
+            <div class="infoItem">
+
+                <div class="infoLabel">
+
+                    Purchase Order No.
+
+                </div>
+
+                <div class="infoValue">
+
+                    EX-PO26-26100211
+
+                </div>
+
+            </div>
+
+            <!-- SUPPLIER -->
+
+            <div class="infoItem">
+
+                <div class="infoLabel">
+
+                    Supplier Name
+
+                </div>
+
+                <div class="infoValue">
+
+                    BANSIDHAR METAL
+
+                </div>
+
+            </div>
+
+            <!-- CHALLAN -->
+
+            <div class="infoItem">
+
+                <div class="infoLabel">
+
+                    Challan No.
+
+                </div>
+
+                <div class="infoValue">
+
+                    EX26GRN-26100186
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- ==========================================================
+                    INVENTORY DETAILS
+=========================================================== -->
+
+<div class="section">
+
+    <div class="sectionHeader">
+
+        <div>
+
+            <h2>📊 INVENTORY DETAILS</h2>
+
+            <div class="blueLine"></div>
+
+        </div>
+
+    </div>
+
+    <div class="sectionBody">
+
+        <div class="infoGrid">
+
+            <!-- INWARD QTY -->
+
+            <div class="infoItem">
+
+                <div>
+
+                    <div class="infoLabel">
+
+                        Inward Qty
+
+                    </div>
+
+                    <div class="infoValue">
+
+                        100.8
+
+                    </div>
+
+                    <div class="progress">
+
+                        <div class="progressFill" style="width:100%;"></div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- ISSUE QTY 1 -->
+
+            <div class="infoItem">
+
+                <div>
+
+                    <div class="infoLabel">
+
+                        Issue Qty 1
+
+                    </div>
+
+                    <div class="infoValue">
+
+                        100.8
+
+                    </div>
+
+                    <div class="progress">
+
+                        <div class="progressFill" style="width:85%;"></div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- ISSUE QTY 2 -->
+
+            <div class="infoItem">
+
+                <div>
+
+                    <div class="infoLabel">
+
+                        Issue Qty 2
+
+                    </div>
+
+                    <div class="infoValue">
+
+                        0
+
+                    </div>
+
+                    <div class="progress">
+
+                        <div class="progressFill" style="width:70%;"></div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- ISSUE QTY 3 -->
+
+            <div class="infoItem">
+
+                <div>
+
+                    <div class="infoLabel">
+
+                        Issue Qty 3
+
+                    </div>
+
+                    <div class="infoValue">
+
+                        0
+
+                    </div>
+
+                    <div class="progress">
+
+                        <div class="progressFill" style="width:55%;"></div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- ISSUE QTY 4 -->
+
+            <div class="infoItem">
+
+                <div>
+
+                    <div class="infoLabel">
+
+                        Issue Qty 4
+
+                    </div>
+
+                    <div class="infoValue">
+
+                        0
+
+                    </div>
+
+                    <div class="progress">
+
+                        <div class="progressFill" style="width:40%;"></div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- ISSUE QTY 5 -->
+
+            <div class="infoItem">
+
+                <div>
+
+                    <div class="infoLabel">
+
+                        Issue Qty 5
+
+                    </div>
+
+                    <div class="infoValue">
+
+                        0
+
+                    </div>
+
+                    <div class="progress">
+
+                        <div class="progressFill" style="width:25%;"></div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- PENDING QTY -->
+
+            <div class="infoItem">
+
+                <div>
+
+                    <div class="infoLabel">
+
+                        Pending Qty
+
+                    </div>
+
+                    <div class="infoValue">
+
+                        0
+
+                    </div>
+
+                    <div class="progress">
+
+                        <div class="progressFill" style="width:15%;"></div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- ==========================================================
+                    CMN DETAILS
+=========================================================== -->
+
+<div class="section">
+
+    <div class="sectionHeader">
+
+        <div>
+
+            <h2>📄 CMN DETAILS</h2>
+
+            <div class="blueLine"></div>
+
+        </div>
+
+    </div>
+
+    <div class="sectionBody">
+
+        <div class="infoGrid">
+
+            <!-- MATERIAL ISSUE DATE -->
+
+            <div class="infoItem">
+
+                <div class="infoLabel">
+
+                    Material Issue Date
+
+                </div>
+
+                <div class="infoValue">
+
+                    19/07/2026
+
+                </div>
+
+            </div>
+
+            <!-- COMPONENT DESCRIPTION -->
+
+            <div class="infoItem">
+
+                <div class="infoLabel">
+
+                    Component Description
+
+                </div>
+
+                <div class="infoValue">
+
+                    MM EX 313003-06 BACK NUT
+
+                </div>
+
+            </div>
+
+            <!-- CMN -->
+
+            <div class="infoItem">
+
+                <div class="infoLabel">
+
+                    CMN
+
+                </div>
+
+                <div class="infoValue">
+
+                    C26071901-03
+
+                </div>
+
+            </div>
+
+            <!-- PROD KGS 1 -->
+
+            <div class="infoItem">
+
+                <div class="infoLabel">
+
+                    Prod Kgs 1
+
+                </div>
+
+                <div class="infoValue">
+
+                    29.85
+
+                </div>
+
+            </div>
+
+            <!-- PROD PCS 1 -->
+
+            <div class="infoItem">
+
+                <div class="infoLabel">
+
+                    Prod Pcs 1
+
+                </div>
+
+                <div class="infoValue">
+
+                    215
+
+                </div>
+
+            </div>
+
+            <!-- PROD REJ QTY 1 -->
+
+            <div class="infoItem">
+
+                <div class="infoLabel">
+
+                    Prod Rej Qty 1
+
+                </div>
+
+                <div class="infoValue">
+
+                    0
+
+                </div>
+
+            </div>
+
+            <!-- VISUAL REJ QTY 1 -->
+
+            <div class="infoItem">
+
+                <div class="infoLabel">
+
+                    Visual Rej Qty 1
+
+                </div>
+
+                <div class="infoValue">
+
+                    2
+
+                </div>
+
+            </div>
+
+            <!-- PROD KGS 2 -->
+
+            <div class="infoItem">
+
+                <div class="infoLabel">
+
+                    Prod Kgs 2
+
+                </div>
+
+                <div class="infoValue">
+
+                    0
+
+                </div>
+
+            </div>
+
+            <!-- PROD PCS 2 -->
+
+            <div class="infoItem">
+
+                <div class="infoLabel">
+
+                    Prod Pcs 2
+
+                </div>
+
+                <div class="infoValue">
+
+                    0
+
+                </div>
+
+            </div>
+
+            <!-- PROD REJ QTY 2 -->
+
+            <div class="infoItem">
+
+                <div class="infoLabel">
+
+                    Prod Rej Qty 2
+
+                </div>
+
+                <div class="infoValue">
+
+                    0
+
+                </div>
+
+            </div>
+
+            <!-- VISUAL REJ QTY 2 -->
+
+            <div class="infoItem">
+
+                <div class="infoLabel">
+
+                    Visual Rej Qty 2
+
+                </div>
+
+                <div class="infoValue">
+
+                    0
+
+                </div>
+
+            </div>
+
+            <!-- PROD KGS 3 -->
+
+            <div class="infoItem">
+
+                <div class="infoLabel">
+
+                    Prod Kgs 3
+
+                </div>
+
+                <div class="infoValue">
+
+                    0
+
+                </div>
+
+            </div>
+
+            <!-- PROD PCS 3 -->
+
+            <div class="infoItem">
+
+                <div class="infoLabel">
+
+                    Prod Pcs 3
+
+                </div>
+
+                <div class="infoValue">
+
+                    0
+
+                </div>
+
+            </div>
+
+            <!-- PROD REJ QTY 3 -->
+
+            <div class="infoItem">
+
+                <div class="infoLabel">
+
+                    Prod Rej Qty 3
+
+                </div>
+
+                <div class="infoValue">
+
+                    0
+
+                </div>
+
+            </div>
+
+            <!-- VISUAL REJ QTY 3 -->
+
+            <div class="infoItem">
+
+                <div class="infoLabel">
+
+                    Visual Rej Qty 3
+
+                </div>
+
+                <div class="infoValue">
+
+                    0
+
+                </div>
+
+            </div>
+
+           <!-- PRODUCTION TO STORE OUT QTY -->
+
+<div class="infoItem">
+
+    <div class="infoLabel">
+
+        Production To Store Out Qty (Pcs)
+
+    </div>
+
+    <div class="infoValue">
+
+        213
+
+    </div>
+
+</div>
+
+<!-- WORK ORDER NO -->
+
+<div class="infoItem" style="height:72px;">
+
+    <div class="infoLabel">
+
+        Work Order No.
+
+    </div>
+
+    <div class="infoValue">
+
+        26100048
+
+    </div>
+
+</div>
+
+</div>   <!-- infoGrid END -->
+
+</div>   <!-- sectionBody END -->
+
+</div>   <!-- section END -->
+
+<!-- ==========================================================
+                    FOOTER
+=========================================================== -->
+
+<div style="clear:both;"></div>
+
+<div class="footer">
+
+    <h3>
+
+        MetalMech Engineering
+
+    </h3>
+
+    <p>
+
+        Material Traceability System
+
+    </p>
+
+    <p>
+
+     Production Details Shown In This Section Will Be Updated After The Completion of Production.
+    </p>   
+
+    <p class="footerSmall">
+
+    </p>
+
+</div>
+
+<!-- ==========================================================
+                END OF DASHBOARD
+=========================================================== -->
+
+</div>
+
+</div>
+
+</body>
+
+</html>
